@@ -24,13 +24,25 @@ using System.IO;
             }
 
             string[] longData = new string[datalist.Length];
-            for(int i = 17; i<datalist.Length;i++)
+            for(int i = 17; i<datalist.Length;i=i+13)
             {
                 string BrokenLongData = datalist[i];
-                Console.WriteLine(BrokenLongData);
-                i = (i + 12);
-                break;
+                Console.WriteLine(BrokenLongData.Replace(".", string.Empty));
+                Console.WriteLine(i / 13);
+                Console.WriteLine(BrokenLongData.Insert(1,"."));
+                longData[i] = BrokenLongData;                
             }
+            string[] latData = new string[datalist.Length];
+            for (int i = 18; i < datalist.Length; i=i+13)
+            {
+                string BrokenLatData = datalist[i];
+                Console.WriteLine(BrokenLatData.Replace(".",string.Empty));
+                Console.WriteLine(i / 13);
+                Console.WriteLine(BrokenLatData);
+                Console.WriteLine(BrokenLatData.Insert(2, "."));
+                latData[i] = BrokenLatData;
+            }
+
         }
     }
 }
