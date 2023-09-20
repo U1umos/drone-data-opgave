@@ -39,13 +39,23 @@ using System.IO;
                 Console.WriteLine(BrokenLatData.Insert(2, "."));*/
                 BrokenLatData = BrokenLatData.Insert(2, ".");
                 latData[i] = BrokenLatData;
+                datalist[i] = BrokenLatData;
             }
             string line = "";
-            for (int i = 0; i < datalist.Length; i++)
+            for (int i = 0; i < datalist.Length; i=i+13)
             {
-                line = datalist[i] + datalist[i+1] + datalist[i + 2] + datalist[i + 3] + datalist[i + 4] + datalist[i + 5] + datalist[i + 6] + datalist[i + 7] + datalist[i + 8] + datalist[i + 9] + datalist[i + 10] + datalist[i + 11] + datalist[i + 12] + "GPSKoord";
+                
+                if (i == 0)
+                {
+                    line = datalist[i] + ";" + datalist[i + 1] + ";" + datalist[i + 2] + ";" + datalist[i + 3] + ";" + datalist[i + 4] + ";" + datalist[i + 5] + ";" + datalist[i + 6] + ";" + datalist[i + 7] + ";" + datalist[i + 8] + ";" + datalist[i + 9] + ";" + datalist[i + 10] + ";" + datalist[i + 11] + ";" + datalist[i + 12] + ";" + "GPSKoord";
+                    i = i + 2;
+                }
+                else
+                {
+                    line = datalist[i] + ";" + datalist[i + 1] + ";" + datalist[i + 2] + ";" + datalist[i + 3] + ";" + datalist[i + 4] + ";" + datalist[i + 5] + ";" + datalist[i + 6] + ";" + datalist[i + 7] + ";" + datalist[i + 8] + ";" + datalist[i + 9] + ";" + datalist[i + 10] + ";" + datalist[i + 11] + ";" + datalist[i + 12] + ";" + datalist[i + 2] + ", " + datalist[i + 3];
+                }
                 // Console.WriteLine(datalist[i]);
-                File.AppendAllText("sorted.csv", datalist[i] + "\n");
+                File.AppendAllText("sorted.csv", line + "\n");
             }
         }
     }
